@@ -1,0 +1,5 @@
+name: moon-generator
+version: 1.0-SNAPSHOT
+author: Yukiiro-Nite
+main: me.yukiironite.Main
+api-version: 1.16
