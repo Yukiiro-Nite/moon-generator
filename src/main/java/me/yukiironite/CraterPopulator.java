@@ -5,8 +5,6 @@ import org.bukkit.Chunk;
 import org.bukkit.generator.BlockPopulator;
 import org.bukkit.Material;
 import org.bukkit.World;
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockState;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.util.Vector;
@@ -24,9 +22,21 @@ import java.util.UUID;
 
 public class CraterPopulator extends BlockPopulator {
   public static Map<String, Craters> cratersByWorld;
+  public static MaterialGradient craterMaterial;
 
   static {
     cratersByWorld = loadAllCraters();
+    craterMaterial = new MaterialGradient();
+
+    craterMaterial.nodes.add(new GradientNode(Material.ANCIENT_DEBRIS, 0, 0, 0.05, 0.1));
+    craterMaterial.nodes.add(new GradientNode(Material.LAVA, 0, 0, 0.05, 1));
+    craterMaterial.nodes.add(new GradientNode(Material.MAGMA_BLOCK, 0, 0.05, 0.1, 1));
+    craterMaterial.nodes.add(new GradientNode(Material.CRYING_OBSIDIAN, 0.05, 0.1, 0.15, 0.25));
+    craterMaterial.nodes.add(new GradientNode(Material.OBSIDIAN, 0.05, 0.2, 0.3, 1));
+    craterMaterial.nodes.add(new GradientNode(Material.BLACKSTONE, 0.2, 0.3, 0.43, 1));
+    craterMaterial.nodes.add(new GradientNode(Material.BASALT, 0.3, 0.43, 0.52, 1));
+    craterMaterial.nodes.add(new GradientNode(Material.STONE, 0.43, 0.52, 1.0, 1));
+    craterMaterial.nodes.add(new GradientNode(Material.GRAVEL, 0.52, 1.0, 1.0, 1));
   }
 
   public void populate(World world, Random random, Chunk chunk) {
@@ -118,14 +128,15 @@ public class CraterPopulator extends BlockPopulator {
           blockY = world.getHighestBlockYAt(blockX, blockZ);
           int offset = crater.getHeightOffset(blockX, blockZ);
           int craterLevel = Math.max(0, Math.min(255, blockY + offset));
+          double distanceRatio = crater.getDistance(blockX, blockZ) / crater.radius;
 
-          Block block = chunk.getBlock(innerX, craterLevel, innerZ);
-          BlockState blockState = block.getState();
-          blockState.setType(Material.CRYING_OBSIDIAN);
-          block.setBlockData(blockState.getBlockData(), false);
+          for(int y = craterLevel; y >= craterLevel - 5; y--) {
+            chunk.getBlock(innerX, y, innerZ)
+              .setType(getCraterMaterial(random, distanceRatio));
+          }
 
           if(craterLevel > blockY) {
-            for(int y = craterLevel-1; y >= blockY; y--) {
+            for(int y = craterLevel-6; y >= blockY; y--) {
               chunk.getBlock(innerX, y, innerZ).setType(Material.STONE);
             }
           } else {
@@ -136,6 +147,10 @@ public class CraterPopulator extends BlockPopulator {
         }
       }
     }
+  }
+
+  public Material getCraterMaterial(Random r, double d) {
+    return craterMaterial.getMaterial(r, d);
   }
 
   public static Map<String, Craters> loadAllCraters() {
