@@ -1,6 +1,7 @@
 package me.yukiironite;
 
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.configuration.serialization.ConfigurationSerialization;
 import org.bukkit.generator.ChunkGenerator;
 
 public class Main extends JavaPlugin {
@@ -17,6 +18,11 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onEnable() {
 
+	}
+
+	@Override
+	public void onDisable() {
+		CraterPopulator.saveAll();
 	}
 		
 	@Override

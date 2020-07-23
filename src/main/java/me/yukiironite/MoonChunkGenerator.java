@@ -39,7 +39,7 @@ public class MoonChunkGenerator extends ChunkGenerator {
     for (int X = 0; X < 16; X++) {
       for (int Z = 0; Z < 16; Z++) {
         // Set biome
-        for (int y = 256; y >= 0; y--) {
+        for (int y = 255; y >= 0; y--) {
           biome.setBiome(X, y, Z, Biome.DESERT_HILLS);
         }
 
