@@ -4,7 +4,7 @@
 
     <artifactId>moon-generator</artifactId>
     <groupId>me.yukiironite</groupId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 	
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -27,7 +27,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.16.1-R0.1-SNAPSHOT</version>
+            <version>1.16.3-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
