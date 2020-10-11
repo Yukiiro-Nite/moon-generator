@@ -20,7 +20,7 @@ Basalt stalactites hang ominously above vast and open blackstone caverns. Obsidi
 Daring miners who dig too deep will be overwhelmed by oppressive heat in the sweltering sauna that is the core. Only the most endurant miners will extract the riches of the molten depths.
 
 ## Recommended setup
-This plugin should be used with [multiverse](https://www.curseforge.com/minecraft/bukkit-plugins/multiverse-core#c7381) to handle world creation and management. To create a new world with this generator, admins can use the following command.
+This plugin should be used with [multiverse](https://www.curseforge.com/minecraft/bukkit-plugins/multiverse-core) to handle world creation and management. To create a new world with this generator, admins can use the following command.
 ```
 /mv create moon NORMAL -g moon-generator
 ```
