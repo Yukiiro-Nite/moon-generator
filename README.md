@@ -2,6 +2,7 @@
 This is a spigot plugin that generates a moon like terrain.
 
 ## Terrain Features
+###### Images rendered with [optifine](https://optifine.net/home) and [SEUS Renewed](https://www.sonicether.com/seus/)
 ### Surface
 ![Rolling gravel hills](preview/surface.png)
 The rolling gravel hills under the dark starry sky shelter skeletons and ghasts. A wondering player may discover craters seething with brimstone.
