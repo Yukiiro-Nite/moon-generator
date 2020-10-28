@@ -7,6 +7,7 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.util.Vector;
 
 import java.io.File;
@@ -40,6 +41,8 @@ public class CraterPopulator extends BlockPopulator {
   }
 
   public void populate(World world, Random random, Chunk chunk) {
+    FileConfiguration config = Main.getInstance().getConfig();
+    boolean generateCraters = config.getBoolean("generate-craters");
     /**
      * This crater populator has two parts. part 1: - Decide if this chunk will have
      * a crater - Add crater to list with information about which chunks will need
@@ -49,11 +52,15 @@ public class CraterPopulator extends BlockPopulator {
      * checking if there are other chunks that can be rendered - Save pending
      * craters to file so that we don't have chunk glitches
      */
-    populateCrater(world, random, chunk);
-    renderCraters(world, random);
+    if(generateCraters) {
+      populateCrater(world, random, chunk);
+      renderCraters(world, random);
+    }
   }
 
   public void populateCrater(World world, Random random, Chunk chunk) {
+    FileConfiguration config = Main.getInstance().getConfig();
+    int chunksPerCrater = config.getInt("chunks-per-crater", 1024);
     Craters worldCraters = cratersByWorld
       .get(world.getUID()
       .toString());
@@ -63,7 +70,7 @@ public class CraterPopulator extends BlockPopulator {
         .craters
         .stream()
         .anyMatch(crater -> crater.isChunkInRange(chunk));
-    if (!hasPendingCrater && random.nextInt(512) <= 1) {
+    if (!hasPendingCrater && random.nextInt(chunksPerCrater) <= 1) {
       int depth = random.nextInt(25) + 3;
       int innerX = random.nextInt(15);
       int innerZ = random.nextInt(15);

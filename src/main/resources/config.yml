@@ -1,8 +1,8 @@
 # Should craters be generated?
 generate-craters: true
-# How often should craters generate?
-#  - Higher numbers mean more craters
-#  - Lower numbers mean fewer craters
-#  - As of V1.0.0, A frequency that is too high may cause run-away generation
+# 1 out of every chunks-per-crater chunks will generate a crater.
+#  - Lower numbers mean more craters
+#  - Higher numbers mean fewer craters
+#  - As of V1.0.0, A chunks-per-crater that is too low may cause run-away generation
 #    and will cause your server to time out.
-crater-frequency: 1
+chunks-per-crater: 512
