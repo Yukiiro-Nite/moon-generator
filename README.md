@@ -58,3 +58,16 @@ zones:
         motion:
           y: '-{player.y}'
 ```
+
+### Config
+You can use the config to control the spawning of craters.
+```yaml
+# Should craters be generated?
+generate-craters: true
+# 1 out of every chunks-per-crater chunks will generate a crater.
+#  - Lower numbers mean more craters
+#  - Higher numbers mean fewer craters
+#  - As of V1.0.0, A chunks-per-crater that is too low may cause run-away generation
+#    and will cause your server to time out.
+chunks-per-crater: 512
+```
