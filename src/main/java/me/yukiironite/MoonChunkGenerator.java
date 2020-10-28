@@ -58,19 +58,18 @@ public class MoonChunkGenerator extends ChunkGenerator {
   public ChunkData generateChunkData(World world, Random random, int chunkX, int chunkZ, BiomeGrid biome) {
     ChunkData chunk = createChunkData(world);
     SimplexOctaveGenerator generator = getNoiseGenerator(world);
-    int blockX, blockZ;
+    int blockX, blockZ, surfaceHeight, surfaceBottomHeight, cavernTopHeight, cavernBottomHeight;
+    double noise, depth;
 
     for (int X = 0; X < 16; X++) {
       blockX = chunkX*16+X;
       for (int Z = 0; Z < 16; Z++) {
         blockZ = chunkZ*16+Z;
 
-        int surfaceHeight = getHeight(generator, blockX, blockZ, 1D, 30D, 128D);
-        int surfaceBottomHeight = getHeight(generator, blockX, blockZ, 0.5D, 5D, 70D);
-        int cavernTopHeight = getHeight(generator, blockX, blockZ, 10D, 20D, 50D);
-        int cavernBottomHeight = getHeight(generator, blockX, blockZ, 2D, 40D, 20D);
-        double noise;
-        double depth;
+        surfaceHeight = getHeight(generator, blockX, blockZ, 1D, 30D, 128D);
+        surfaceBottomHeight = getHeight(generator, blockX, blockZ, 0.5D, 5D, 70D);
+        cavernTopHeight = getHeight(generator, blockX, blockZ, 10D, 20D, 50D);
+        cavernBottomHeight = getHeight(generator, blockX, blockZ, 2D, 40D, 20D);
 
         // Set biome
         for (int y = 255; y >= surfaceBottomHeight; y--) {
