@@ -4,7 +4,7 @@
 
     <artifactId>moon-generator</artifactId>
     <groupId>me.yukiironite</groupId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 	
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>

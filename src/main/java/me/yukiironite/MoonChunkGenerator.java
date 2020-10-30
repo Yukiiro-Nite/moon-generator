@@ -48,6 +48,11 @@ public class MoonChunkGenerator extends ChunkGenerator {
   }
 
   @Override
+  public boolean isParallelCapable() {
+    return true;
+  }
+
+  @Override
   public List<BlockPopulator> getDefaultPopulators(World world) {
       return Arrays.asList(
         (BlockPopulator) new CraterPopulator()
