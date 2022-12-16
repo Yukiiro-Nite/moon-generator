@@ -36,8 +36,8 @@ public class CraterPopulator extends BlockPopulator {
     craterMaterial.nodes.add(new GradientNode(Material.OBSIDIAN, 0.05, 0.2, 0.3, 1));
     craterMaterial.nodes.add(new GradientNode(Material.BLACKSTONE, 0.2, 0.3, 0.43, 1));
     craterMaterial.nodes.add(new GradientNode(Material.BASALT, 0.3, 0.43, 0.52, 1));
-    craterMaterial.nodes.add(new GradientNode(Material.STONE, 0.43, 0.52, 1.0, 1));
-    craterMaterial.nodes.add(new GradientNode(Material.GRAVEL, 0.52, 1.0, 1.0, 1));
+    craterMaterial.nodes.add(new GradientNode(Material.DEAD_BUBBLE_CORAL_BLOCK, 0.43, 0.52, 1.0, 1));
+    craterMaterial.nodes.add(new GradientNode(Material.DEAD_BRAIN_CORAL_BLOCK, 0.52, 1.0, 1.0, 1));
   }
 
   public void populate(World world, Random random, Chunk chunk) {
@@ -144,7 +144,7 @@ public class CraterPopulator extends BlockPopulator {
 
           if(craterLevel > blockY) {
             for(int y = craterLevel-6; y >= blockY; y--) {
-              chunk.getBlock(innerX, y, innerZ).setType(Material.STONE);
+              chunk.getBlock(innerX, y, innerZ).setType(Material.DEAD_BUBBLE_CORAL_BLOCK);
             }
           } else {
             for(int y = craterLevel+1; y <= blockY; y++) {
