@@ -17,7 +17,7 @@ public class MoonChunkGenerator extends ChunkGenerator {
 
   static {
     upperCavernMaterial = new MaterialGradient();
-    upperCavernMaterial.nodes.add(new GradientNode(Material.STONE, 0.0, 0.0, 1.0, 1.0));
+    upperCavernMaterial.nodes.add(new GradientNode(Material.DEAD_BUBBLE_CORAL_BLOCK, 0.0, 0.0, 1.0, 1.0));
     upperCavernMaterial.nodes.add(new GradientNode(Material.BLACKSTONE, 0.1, 1.0, 1.0, 2.0));
     upperCavernMaterial.nodes.add(new GradientNode(Material.GILDED_BLACKSTONE, 0.2, 1.0, 1.0, 0.25));
     upperCavernMaterial.nodes.add(new GradientNode(Material.COAL_ORE, 0.0, 0.0, 0.2, 0.05));
@@ -83,13 +83,13 @@ public class MoonChunkGenerator extends ChunkGenerator {
 
         // Set surface
         for (int y = surfaceHeight; y > surfaceHeight-4; y--)
-          chunk.setBlock(X, y, Z, Material.GRAVEL);
+          chunk.setBlock(X, y, Z, Material.DEAD_BRAIN_CORAL_BLOCK);
         
         // Set upper caverns
         for (int y = surfaceHeight-4; y > surfaceBottomHeight; y--) {
           biome.setBiome(X, y, Z, Biome.SOUL_SAND_VALLEY);
           if(y >= surfaceHeight-6) {
-            chunk.setBlock(X, y, Z, Material.STONE);
+            chunk.setBlock(X, y, Z, Material.DEAD_BUBBLE_CORAL_BLOCK);
           } else {
             noise = generator.noise(blockX / 2.0, y, blockZ / 2.0, 0.0, 1.375, 4.0, true);
             if(noise >= 0.0) {
