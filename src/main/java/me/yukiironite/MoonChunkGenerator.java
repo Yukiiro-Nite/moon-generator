@@ -106,7 +106,7 @@ public class MoonChunkGenerator extends ChunkGenerator {
         // Set cavern ceiling
         for (int y = surfaceBottomHeight; y > cavernTopHeight; y--) {
           biome.setBiome(X, y, Z, Biome.BASALT_DELTAS);
-          chunk.setBlock(X, y, Z, Material.BASALT);
+          chunk.setBlock(X, y, Z, Material.DEAD_FIRE_CORAL_BLOCK);
         }
 
         // Set cavern
