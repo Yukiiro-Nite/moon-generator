@@ -35,7 +35,7 @@ public class CraterPopulator extends BlockPopulator {
     craterMaterial.nodes.add(new GradientNode(Material.CRYING_OBSIDIAN, 0.05, 0.1, 0.15, 0.25));
     craterMaterial.nodes.add(new GradientNode(Material.OBSIDIAN, 0.05, 0.2, 0.3, 1));
     craterMaterial.nodes.add(new GradientNode(Material.BLACKSTONE, 0.2, 0.3, 0.43, 1));
-    craterMaterial.nodes.add(new GradientNode(Material.BASALT, 0.3, 0.43, 0.52, 1));
+    craterMaterial.nodes.add(new GradientNode(Material.DEAD_FIRE_CORAL_BLOCK, 0.3, 0.43, 0.52, 1));
     craterMaterial.nodes.add(new GradientNode(Material.DEAD_BUBBLE_CORAL_BLOCK, 0.43, 0.52, 1.0, 1));
     craterMaterial.nodes.add(new GradientNode(Material.DEAD_BRAIN_CORAL_BLOCK, 0.52, 1.0, 1.0, 1));
   }
